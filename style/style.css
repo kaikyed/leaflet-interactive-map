@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-html, body{
+:root {
+    --cor-borda: #b1cea3;
+    --cor-fundo-painel: #f6f5f4;
+    --cor-fundo-hover: #f5fff0;
+    --cor-fundo-branco: white;
+    --cor-texto-principal: #333;
+    --cor-fechar-hover: rgb(215, 3, 3);
+}
+
+html, body {
     height: 100%;
     width: 100%;
     margin: auto;
@@ -12,37 +21,38 @@ html, body{
     width: 100%;
 }
 
-.input_div{
+.input_div {
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 100%;
     gap: 1rem;
-
 }
 
-.data_div{
-
+.data_div {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    width: 20%;
-    justify-content: center;
+    width: 90%;
+    max-width: 400px;
     margin: 1rem;
-    justify-self: center;
     padding: 1rem;
-    border: 0.2rem solid #c0e1b1;
+    border: 0.2rem solid var(--cor-borda);
     border-radius: 10px;
-    background-color: #f6f5f4;
+    background-color: var(--cor-fundo-painel);
     position: fixed;
     top: 1%;
     left: 4.5%;
     z-index: 99999;
-    transition: all 0.5s ease;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
     opacity: 0;
-    visibility: collapse;
+    visibility: hidden;
     overflow: hidden;
+}
 
+.menu_visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 .close_btn {
@@ -52,35 +62,30 @@ html, body{
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
-    color: #333;
+    color: var(--cor-texto-principal);
     transition: color 0.5s ease;
 }
 
 .close_btn:hover {
-    color: rgb(215, 3, 3);
+    color: var(--cor-fechar-hover);
 }
 
-.menu_visible{
-    opacity: 100%;
-    visibility: visible;
-}
-
-.latlong{
+.latlong {
     display: none;
-}
-
-.cord{
-    display: none;
-}
-
-.visible{
-    display: flex;
+    flex-direction: column;
     width: 100%;
     gap: 1rem;
-    
 }
 
-.select{
+.cord {
+    display: none;
+}
+
+.visible {
+    display: flex;
+}
+
+.select {
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -89,38 +94,36 @@ html, body{
     text-align: center;
 }
 
-#input_selection{
+#input_selection {
     height: 50%;
     margin: 0;
 }
 
-#csvinput{
+#csvinput {
     margin: auto;
 }
 
-#button_save{
+#button_save {
     height: 50%;
     margin: auto 0 auto 0;
-
 }
 
-label, input, select, button, input::file-selector-button{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+label, input, select, button, input::file-selector-button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-button{
-
+button {
     border-radius: 10px;
-    border: 0.1rem solid #b1cea3;
-    background-color: white;
+    border: 0.1rem solid var(--cor-borda);
+    background-color: var(--cor-fundo-branco);
     transition: all 0.25s ease;
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
 }
 
-button:hover{
-    background-color:  #f5fff0;
+button:hover {
+    background-color: var(--cor-fundo-hover);
 }
 
 button:active {
@@ -128,31 +131,28 @@ button:active {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
 }
 
-input{
+input {
     border-radius: 10px;
-    border: 0.1rem solid #b1cea3;
+    border: 0.1rem solid var(--cor-borda);
     transition: all 0.25s ease;
 }
 
-input:focus{
+input:focus {
     outline: none;
-    background-color:  #f5fff0;
-
-    
+    background-color: var(--cor-fundo-hover);
 }
 
-select:focus{
-    outline: none;
-    background-color:  #fafff8;
-}
-
-select{
+select {
     border-radius: 10px;
     text-align: center;
     transition: all 0.25s ease;
     outline: none;
-    border: 0.1rem solid #b1cea3;;
+    border: 0.1rem solid var(--cor-borda);
+}
 
+select:focus {
+    outline: none;
+    background-color: var(--cor-fundo-hover);
 }
 
 input[type="file"] {
@@ -164,8 +164,8 @@ input[type="file"] {
     flex-direction: column;
     gap: 0.8rem;
     padding: 10px 20px;
-    background-color: white;
-    border: 0.1rem solid #b1cea3;
+    background-color: var(--cor-fundo-branco);
+    border: 0.1rem solid var(--cor-borda);
     border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
@@ -174,7 +174,7 @@ input[type="file"] {
 }
 
 .button_arquivo:hover {
-    background-color: #f5fff0;
+    background-color: var(--cor-fundo-hover);
 }
 
 .button_arquivo:active {
@@ -186,4 +186,13 @@ input[type="file"] {
     font-weight: lighter;
     font-style: italic;
     text-align: center;
+}
+
+.leaflet-control-layers {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.leaflet-control-layers-expanded {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
